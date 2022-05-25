@@ -10,10 +10,10 @@ from fast_bitrix24 import Bitrix
 from datetime import date
 import holidays
 
-ru_holidays = holidays.RU()  # this is a dict
+ru_holidays = holidays.RU() # this is a dict
 
-a = date(2022, 7, 1) in ru_holidays  # True
-b = date(2022, 1, 2) in ru_holidays  # False
+a = date(2022, 7, 1) in ru_holidays # True
+b = date(2022, 1, 2) in ru_holidays # False
 c = ru_holidays.get('2014-01-01')
 d = ru_holidays.keys[1]
 
