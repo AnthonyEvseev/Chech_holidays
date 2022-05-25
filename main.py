@@ -21,7 +21,7 @@ holidays_name = ru_holidays.get(day_plus_3)
 
 
 def task_holiday(today_check, day, name):
-    if today_check==False:
+    if today_check:
         task = {"ID": 1, 'fields': {"TITLE": f"{day} будет {name}!\n"
                                              f"Не забудь поздравить всех причастных)", 'RESPONSIBLE_ID': '1'}}
         b.call('tasks.task.add', task)
@@ -31,8 +31,7 @@ def task_holiday(today_check, day, name):
 
 
 def main(today_check, day, name):
-    schedule.every(4).seconds.do(task_holiday, today_check, day, name)
-    # schedule.every().day.at('10:00').do(task_holiday, today_check, day, name)
+    schedule.every().day.at('10:00').do(task_holiday, today_check, day, name)
     while True:
         schedule.run_pending()
 
