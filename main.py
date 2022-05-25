@@ -33,3 +33,6 @@ def task_holiday(today_check, day, name):
 schedule.every().day.at('10:00').do(task_holiday, check_holiday, day_plus_3, ru_holidays_name)
 while True:
     schedule.run_pending()
+
+if __name__ == '__main__':
+    task_holiday(task_holiday, check_holiday, day_plus_3, ru_holidays_name)
