@@ -21,7 +21,7 @@ ru_holidays_name = ru_holidays.get(day_plus_3)
 
 
 def task_holiday(today_check, day, name):
-    if today_check == True:
+    if today_check:
         task = {"ID": 1, 'fields': {"TITLE": f"{day} будет {name}!\n"
                                              f"Не забудь поздравить всех причастных)", 'RESPONSIBLE_ID': '1'}}
         b.call('tasks.task.add', task)
