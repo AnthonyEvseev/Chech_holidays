@@ -1,10 +1,14 @@
+from environs import Env
 from fast_bitrix24 import Bitrix
 import datetime
 import holidays
 import schedule
 
-webhook = "https://b24-uxw5nw.bitrix24.ru/rest/1/jxcujeqn73soik0d/"
-b = Bitrix(webhook)
+env = Env()
+env.read_env()
+
+WEBHOOK = env.str('WEBHOOK')
+b = Bitrix(WEBHOOK)
 
 # Словарь праздников
 ru_holidays = holidays.RU()
@@ -24,6 +28,7 @@ def task_holiday(today_check, day, name):
     else:
         print('Через 3 дня нет праздников\n'
               'Засыпаю до завтра')
+
 
 schedule.every().day.at('10:00').do(task_holiday, check_holiday, day_plus_3, ru_holidays_name)
 while True:
